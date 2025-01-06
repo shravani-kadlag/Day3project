@@ -1,0 +1,20 @@
+pipeline{
+    agent any 
+    stages{
+        stage('clone'){
+            steps{
+                git 'https://github.com/shravani-kadlag/Day3project.git'
+            }
+        }
+        stage('Build') {
+            steps{
+                sh 'acho "Building the  project ..." '
+            }
+        }
+        stage ('Test') {
+            steps{
+                sh 'python -n unitiest discover -s ./ -p "test_*.py"'
+            }
+        }
+    }
+}
